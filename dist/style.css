@@ -1,0 +1,187 @@
+:root {
+    --text-blue: hsl(238, 29%, 16%);
+    --text-dkblue:hsl(240, 6%, 50%);
+    --text-xtrdkblue:hsl(237, 12%, 33%);
+    --text-red:hsl(14, 88%, 65%);
+    --gradient-violett: hsl(273, 75%, 66%);
+    --gradient-blue: hsl(240, 73%, 65%);
+    --divider-blue:hsl(240, 5%, 91%);
+    --shadow-dkviolett:hsl(240,39,42%);
+}
+html {
+    box-sizing: initial;
+    font-size:100%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin:0;
+    padding: 2rem;
+    font-family: 'Kumbh Sans', sans-serif;
+    min-height: 100vh;
+    background-image: linear-gradient(var(--gradient-violett), var(--gradient-blue));
+    box-sizing: border-box;
+}
+
+.card {
+    background:#fff;
+    background-image: url('../images/bg-pattern-mobile.svg');
+    background-size: 15rem;
+    background-repeat: no-repeat;
+    background-position: center top;
+    border-radius: 1rem;
+    max-width: 920px;
+    margin:6rem auto;
+    height:auto;
+    transition: all 500ms ease-in-out;
+    -webkit-box-shadow: 0 40px 40px -20px var(--shadow-dkviolett), 0 40px 30px -40px var(--shadow-dkviolett);
+    -moz-box-shadow: 0 40px 40px -20px var(--shadow-dkviolett), 0 40px 30px -40px var(--shadow-dkviolett);
+    box-shadow: 0 40px 40px -20px var(--shadow-dkviolett), 0 40px 30px -40px var(--shadow-dkviolett);
+}
+.card__box {display:none;}
+.card__image {
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	background: url('../images/illustration-woman-online-mobile.svg');
+	background-repeat: no-repeat;
+	background-position: calc(50% - 14.5px);
+	background-size: contain;
+	height: 196px;
+	width: 266px;
+	margin: 0 auto -6rem;
+	position: relative;
+	top: -7rem;
+}
+.card__text {
+	padding: 2rem 1.5rem;
+}
+.card__text h1 {text-align: center;}
+.accordion__item{
+    padding:0;
+    border-bottom:1px solid var(--divider-blue);
+}
+.accordion__header {
+    margin: 0;
+    text-align: left;
+}
+.accordion__button {
+	display: flex;
+	background: transparent;
+	border: 0;
+	padding: 1rem 0.5rem 1rem 0;
+	font-family: 'Kumbh Sans', sans-serif;
+	font-size: 1.2rem;
+	text-align: left;
+	line-height: 1.4rem;
+	color: var(--text-xtrdkblue);
+	width: 100%;
+	justify-content: space-between;
+    transition: color 150ms ease-in-out;
+}
+.accordion__button:hover {
+    color:var(--text-red);
+    cursor: pointer;
+}
+.accordion__button::after {
+	content: "";
+	display: block;
+    flex-shrink: 0;
+	width: 1rem;
+	height: 1rem;
+	background-image: url('../images/icon-arrow-down.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+    margin:0.25rem 0 0 0.25rem;
+    transition: transform 500ms ease-in-out;
+    transform-origin: center;
+}
+.open .accordion__button::after {
+    transform: rotate(-180deg);
+}
+.accordion__button:focus:focus-visible {
+	border: none;
+	outline: 1px var(--text-red) solid;
+}
+.open .accordion__button {font-weight:700;}
+.accordion__body {
+	color: var(--text-dkblue);
+	line-height: 1.4rem;
+	padding-right: 1.5rem;
+}
+.accordion__collapse {
+    transform-origin:top;
+    padding:0;
+    transform-origin: bottom;
+    transform:scaleY(0);
+    transition: padding 300ms ease, height 500ms ease-in, transform 300ms ease;
+}
+.close .accordion__collapse {
+    height:0;
+    padding:0;
+    transform:scaleY(0);
+    transition: padding 300ms ease, height 500ms ease-in, transform 300ms ease;
+}
+.open .accordion__collapse {
+    padding:0 0 1rem;
+    transform:scaleY(1);
+    transform-origin: top;
+}
+@media screen and (min-width: 56em) {
+    .card {
+        display: flex;
+        margin: 3rem auto;
+        position: relative;
+        background-image:none;
+    }
+    .card__box {
+        display: block;
+        background: url('../images/illustration-box-desktop.svg');
+        width: 191px;
+        height: 100%;
+        position: absolute;
+        left: -10%;
+        top: 0;
+        z-index: 1;
+        background-repeat: no-repeat;
+        background-position: center 320px;
+    }
+    .card__image, .card__text {
+        flex:1;
+    }
+    .card__image {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background: url('../images/illustration-woman-online-desktop.svg'), url('../images/bg-pattern-desktop.svg');
+        background-repeat: no-repeat;
+        background-position: -4.7em calc(359px / 2), -560px -130px;
+        width: 100%;
+        height: auto;
+        top: 0;
+    }
+    .card__text h1 {text-align: left;}
+    .card__text {
+        padding: 8rem 1.5rem;
+    }
+    .accordion__button {
+        font-size:18px;
+    }
+}
+
+.attribution { 
+    font-size: 0.8rem; 
+    text-align: center; 
+    position: relative;
+    z-index: 99;}
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+    transition: all 150ms ease-in-out;
+}
+.attribution a:hover {
+    color:#fff;
+    cursor: pointer;
+}
